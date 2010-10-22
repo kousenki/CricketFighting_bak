@@ -2,6 +2,10 @@ package mediator
 {
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
+	
+	import view.GrassField;
+	import view.ToolBox;
+	import view.UserInformationPanel;
 
 	public class StageMediator extends Mediator
 	{
@@ -15,8 +19,22 @@ package mediator
 		public override function onRegister():void
 		{
 			var stage:GameStage = viewComponent as GameStage;
+			initView(stage);
+			
 			registerChildMediators(stage);
 			registerCommands();
+		}
+		
+		private function initView(stage:GameStage):void
+		{
+			stage.grassField = new GrassField();
+			stage.addChild(stage.grassField);
+			
+			stage.toolBox = new ToolBox();
+			stage.addChild(stage.toolBox);
+			
+			stage.userPanel = new UserInformationPanel();
+			stage.addChild(stage.userPanel);			
 		}
 		
 		private function registerChildMediators(stage:GameStage):void

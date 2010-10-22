@@ -23,15 +23,7 @@ package
 			
 		public function GameStage()
 		{
-			initView();
 			ApplicationFacade.getInstance().startUp(this);
-		}
-		
-		private function initView():void
-		{
-			addChild(grassField = new GrassField());
-			addChild(toolBox = new ToolBox());
-			addChild(userPanel = new UserInformationPanel());
 		}
 	}
 }
