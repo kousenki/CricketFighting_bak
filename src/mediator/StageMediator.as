@@ -16,6 +16,7 @@ package mediator
 		{
 			var stage:GameStage = viewComponent as GameStage;
 			registerChildMediators(stage);
+			registerCommands();
 		}
 		
 		private function registerChildMediators(stage:GameStage):void
@@ -27,6 +28,7 @@ package mediator
 		
 		private function registerCommands():void
 		{
+			// register commands for game stage initiated operations
 		}
 		
 		public override function listNotificationInterests():Array
