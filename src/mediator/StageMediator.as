@@ -1,61 +1,58 @@
 package mediator
 {
-	import org.puremvc.as3.interfaces.INotification;
-	import org.puremvc.as3.patterns.mediator.Mediator;
+	import br.com.stimuli.loading.BulkLoader;
+	import br.com.stimuli.loading.BulkProgressEvent;
 	
-	import view.GrassField;
-	import view.ToolBox;
-	import view.UserInformationPanel;
+	import flash.net.URLRequest;
+	
+	import org.puremvc.as3.patterns.mediator.Mediator;
 
 	public class StageMediator extends Mediator
 	{
+		private var loader:BulkLoader;
+		
 		public static const NAME:String = "StageMediator";
 		
 		public function StageMediator(viewComponent:Object=null)
 		{
 			super(NAME, viewComponent);
+			loader = new BulkLoader("resource loader");
+		}
+		
+		public function view():GameStage
+		{
+			return viewComponent as GameStage;
 		}
 		
 		public override function onRegister():void
 		{
 			var stage:GameStage = viewComponent as GameStage;
-			initView(stage);
+			facade.registerMediator(new LoadingSplashMediator(stage.loadingSplash));
+			stage.showLoadingSplash();
+			startLoadingResources();
+		}
+		
+		private function startLoadingResources():void
+		{
+			loader.add(new URLRequest("http://www.host.com/resource.jpg"));
+			loader.addEventListener(BulkProgressEvent.PROGRESS, onLoadingProgress);
+			loader.addEventListener(BulkProgressEvent.COMPLETE, onLoadingComplete);
+			loader.start();
+		}
+		
+		private function onLoadingProgress(evt:BulkProgressEvent):void
+		{
+			sendNotification(LoadingSplashMediator.LOADING_PROGRESS, evt.percentLoaded);
+		}
+		
+		private function onLoadingComplete(evt:BulkProgressEvent):void
+		{
+			view().hideLoadingSplash();
+			view().initGameView();
 			
-			registerChildMediators(stage);
-			registerCommands();
-		}
-		
-		private function initView(stage:GameStage):void
-		{
-			stage.grassField = new GrassField();
-			stage.addChild(stage.grassField);
-			
-			stage.toolBox = new ToolBox();
-			stage.addChild(stage.toolBox);
-			
-			stage.userPanel = new UserInformationPanel();
-			stage.addChild(stage.userPanel);			
-		}
-		
-		private function registerChildMediators(stage:GameStage):void
-		{
-			facade.registerMediator(new GrassFieldMediator(stage.grassField));
-			facade.registerMediator(new UserPanelMediator(stage.userPanel));
-			facade.registerMediator(new ToolBoxMediator(stage.toolBox));			
-		}
-		
-		private function registerCommands():void
-		{
-			// register commands for game stage initiated operations
-		}
-		
-		public override function listNotificationInterests():Array
-		{
-			return [];
-		}
-		
-		public override function handleNotification(notification:INotification):void
-		{
+			facade.registerMediator(new GrassFieldMediator(view().grassField));
+			facade.registerMediator(new ToolBoxMediator(view().toolBox));
+			facade.registerMediator(new UserPanelMediator(view().userPanel));
 		}
 	}
 }

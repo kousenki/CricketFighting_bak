@@ -1,16 +1,16 @@
 package
 {
 	import flash.display.Sprite;
-	import flash.events.MouseEvent;
-	import flash.ui.Mouse;
 	
 	import view.GrassField;
+	import view.LoadingSplash;
 	import view.ToolBox;
 	import view.UserInformationPanel;
-	import view.control.ImageButton;
 
 	public class GameStage extends Sprite
 	{
+		public var loadingSplash:LoadingSplash;
+		
 		// Grass Field
 		public var grassField:GrassField;
 		
@@ -24,6 +24,28 @@ package
 		public function GameStage()
 		{
 			ApplicationFacade.getInstance().startUp(this);
+		}
+		
+		public function showLoadingSplash():void
+		{
+			loadingSplash = new LoadingSplash();
+			this.addChild(loadingSplash);
+		}
+		
+		public function hideLoadingSplash():void
+		{
+			this.removeChild(loadingSplash);
+		}
+		
+		public function initGameView():void
+		{
+			grassField = new GrassField();
+			toolBox = new ToolBox();
+			userPanel = new UserInformationPanel();
+			
+			addChild(grassField);
+			addChild(toolBox);
+			addChild(userPanel);
 		}
 	}
 }

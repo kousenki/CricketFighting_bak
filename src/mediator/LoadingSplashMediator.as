@@ -10,23 +10,13 @@ package mediator
 	public class LoadingSplashMediator extends Mediator
 	{
 		public static const NAME:String = "LoadingSplashMediator";
-		public static const LOADING_COMPLETE:String = NAME + "LoadingComplete";
 		public static const LOADING_PROGRESS:String = NAME + "LoadingProgress";
 		
 		private var stage:GameStage;
 		
-		public function LoadingSplashMediator(root:Object=null)
+		public function LoadingSplashMediator(viewComponent:Object=null)
 		{
-			super(NAME, null);
-			stage = root;
-		}
-		
-		protected override function onRegister():void
-		{
-			this.viewComponent = new LoadingSplash();
-			stage.addChild(viewComponent as DisplayObject);
-			
-			setupBinding();
+			super(NAME, viewComponent);
 		}
 		
 		public function view():LoadingSplash
@@ -36,7 +26,7 @@ package mediator
 		
 		public override function listNotificationInterests():Array
 		{
-			return [LOADING_PREGRESS, LOADING_COMPLETE];
+			return [LOADING_PROGRESS];
 		}
 		
 		public override function handleNotification(notification:INotification):void
@@ -45,11 +35,6 @@ package mediator
 			{
 				case LOADING_PROGRESS:
 				view().showProgress(notification.getBody() as Number);
-				break;
-				
-				case LOADING_COMPLETE:
-				stage.removeChild(view());
-				facade.registerMediator(new StageMediator(stage));
 				break;
 			}
 		}
