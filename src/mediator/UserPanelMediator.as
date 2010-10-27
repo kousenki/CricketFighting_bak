@@ -1,5 +1,7 @@
 package mediator
 {
+	import model.UserProfileProxy;
+	
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
 	import view.UserInformationPanel;
@@ -11,6 +13,7 @@ package mediator
 		public function UserPanelMediator(viewComponent:Object=null)
 		{
 			super(NAME, viewComponent);
+			facade.registerProxy(new UserProfileProxy());
 		}
 		
 		public function view():UserInformationPanel

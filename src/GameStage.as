@@ -7,6 +7,7 @@ package
 	import view.ToolBox;
 	import view.UserInformationPanel;
 
+	[SWF(width="800", height="564", frameRate="24")]
 	public class GameStage extends Sprite
 	{
 		public var loadingSplash:LoadingSplash;
