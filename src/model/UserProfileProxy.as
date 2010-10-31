@@ -16,20 +16,24 @@ package model
 			super(NAME, null);
 		}
 		
-		public function GetUserProfile(id:int):UserProfile
+		public function GetUserProfile():UserProfile
 		{
 			// lazy loading from server upon first access
 			if (getData() == null)
 			{
-				loadUserProfile(id);
+				loadUserProfile();
 			}
 			
 			return getData() as UserProfile;
 		}
 		
-		public function loadUserProfile(id:int):void
+		public function loadUserProfile():void
 		{
-			// TODO: load user profile according to user id from server
+			// TODO: load user profile according to sns user id from server
+			var profile:UserProfile = new UserProfile();
+			profile.UserID = 0;
+			profile.UserName = "Test User";
+			setData(profile);
 			return;
 		}
 	}

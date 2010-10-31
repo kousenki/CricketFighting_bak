@@ -7,7 +7,12 @@ package view
 		public function ToolBox()
 		{
 			super();
+			initView();
 		}
 		
+		private function initView():void
+		{
+			
+		}
 	}
 }

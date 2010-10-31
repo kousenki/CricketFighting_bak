@@ -13,9 +13,23 @@ package mediator
 		public function StageMediator(viewComponent:Object=null)
 		{
 			super(NAME, viewComponent);
-			ResourceStore.getInstance().addEventListener(BulkProgressEvent.PROGRESS, onLoadingProgress);
-			ResourceStore.getInstance().addEventListener(BulkProgressEvent.COMPLETE, onLoadingComplete);			
+			
+			startLoadingResources();
+	
 		}
+		
+		private function startLoadingResources():void
+		{
+			// register call backs so we can be notified of loading progress
+			ResourceStore.getInstance().addEventListener(BulkProgressEvent.PROGRESS, onLoadingProgress);
+			ResourceStore.getInstance().addEventListener(BulkProgressEvent.COMPLETE, onLoadingComplete);
+			
+			// kick start the loading process	
+			ResourceStore.getInstance().AsyncLoad();
+			
+			// show the loading UI
+			view().showLoadingSplash();				
+		}		
 		
 		public function view():GameStage
 		{
@@ -24,9 +38,8 @@ package mediator
 		
 		public override function onRegister():void
 		{
-			view().showLoadingSplash();
-			ResourceStore.getInstance().AsyncLoad();
-			//onLoadingComplete(null);
+			// fake a load complete so we can continue testing without a real backend
+			onLoadingComplete(null);
 		}
 		
 		private function onLoadingProgress(evt:BulkProgressEvent):void

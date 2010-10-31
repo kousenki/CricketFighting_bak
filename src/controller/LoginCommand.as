@@ -14,8 +14,6 @@ package controller
 		
 		public override function execute(notification:INotification):void
 		{
-			var userProfile:UserProfileProxy = facade.retrieveProxy(UserProfileProxy.NAME);
-			userProfile.loadUserProfile(notification.getBody() as int);
 		}
 		
 	}
