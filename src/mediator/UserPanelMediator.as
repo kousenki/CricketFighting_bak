@@ -2,6 +2,7 @@ package mediator
 {
 	import model.UserProfileProxy;
 	
+	import org.aswing.event.AWEvent;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
 	import view.UserInformationPanel;
@@ -22,6 +23,13 @@ package mediator
 			view().setSizeWH(200, 500);
 			view().show();
 			view().setUserName(profile.UserName);
+			
+			view().btn.addActionListener(onButtonClick);
+		}
+		
+		private function onButtonClick(evt:AWEvent):void
+		{
+			view().sayHi();
 		}
 		
 		public function view():UserInformationPanel

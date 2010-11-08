@@ -1,8 +1,9 @@
 package
 {
+	import controller.StartupCommand;
+	
 	import org.puremvc.as3.interfaces.IFacade;
 	import org.puremvc.as3.patterns.facade.Facade;
-	import controller.StartupCommand;
 
 	public class ApplicationFacade extends Facade implements IFacade
 	{
