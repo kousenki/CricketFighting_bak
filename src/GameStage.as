@@ -2,6 +2,10 @@ package
 {
 	import flash.display.Sprite;
 	
+	import org.aswing.AsWingManager;
+	import org.aswing.UIManager;
+	import org.aswing.skinbuilder.orange.OrangeLookAndFeel;
+	
 	import view.GrassField;
 	import view.LoadingSplash;
 	import view.ToolBox;
@@ -24,6 +28,8 @@ package
 			
 		public function GameStage()
 		{
+			AsWingManager.initAsStandard(this);
+			UIManager.setLookAndFeel(new OrangeLookAndFeel());
 			ApplicationFacade.getInstance().startUp(this);
 		}
 		

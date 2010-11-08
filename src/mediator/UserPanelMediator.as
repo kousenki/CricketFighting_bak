@@ -18,6 +18,9 @@ package mediator
 			super(NAME, viewComponent);
 			var proxy:UserProfileProxy = facade.retrieveProxy(UserProfileProxy.NAME) as UserProfileProxy;
 			profile = proxy.GetUserProfile();
+			
+			view().setSizeWH(200, 500);
+			view().show();
 			view().setUserName(profile.UserName);
 		}
 		

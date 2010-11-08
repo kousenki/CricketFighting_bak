@@ -9,7 +9,7 @@ package view
 	// within it, e.g. mouse cursor tracking
 	public class GrassField extends Sprite
 	{
-		[Embed(source="assets/bg.jpg")]
+		[Embed(source="assets/embed/bg.jpg")]
 		private var background:Class;
 		
 		public function GrassField()
