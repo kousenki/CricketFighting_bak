@@ -4,6 +4,7 @@ package mediator
 	
 	import model.ResourceStore;
 	
+	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 
 	public class StageMediator extends Mediator
@@ -60,6 +61,26 @@ package mediator
 			facade.registerMediator(new GrassFieldMediator(view().grassField));
 			facade.registerMediator(new ToolBoxMediator(view().toolBox));
 			facade.registerMediator(new UserPanelMediator(view().userPanel));
+		}
+		
+		public override function listNotificationInterests():Array
+		{
+			return [ToolBoxMediator.OPEN_USER_PANEL];
+		}
+		
+		public override function handleNotification(notification:INotification):void
+		{
+			switch(notification.getName())
+			{
+				case ToolBoxMediator.OPEN_USER_PANEL:
+				if (!view().userPanel.isVisible())
+				{
+					view().userPanel.setSizeWH(200, 450);
+					view().userPanel.setLocationXY(100, 0);
+					view().userPanel.show();
+				}
+				break;
+			}
 		}
 	}
 }

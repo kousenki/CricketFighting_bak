@@ -47,7 +47,7 @@ package
 		public function initGameView():void
 		{
 			grassField = new GrassField();
-			toolBox = new ToolBox();
+			toolBox = new ToolBox();			
 			userPanel = new UserInformationPanel();
 			
 			addChild(grassField);

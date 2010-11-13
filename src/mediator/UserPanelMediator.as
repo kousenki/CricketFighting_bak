@@ -17,14 +17,15 @@ package mediator
 		public function UserPanelMediator(viewComponent:Object=null)
 		{
 			super(NAME, viewComponent);
+			view().addEventListener(AWEvent.SHOWN, onUserPanelShown);
+			view().btn.addActionListener(onButtonClick);
+		}
+		
+		private function onUserPanelShown(evt:AWEvent):void
+		{
 			var proxy:UserProfileProxy = facade.retrieveProxy(UserProfileProxy.NAME) as UserProfileProxy;
 			profile = proxy.GetUserProfile();
-			
-			view().setSizeWH(200, 500);
-			view().show();
 			view().setUserName(profile.UserName);
-			
-			view().btn.addActionListener(onButtonClick);
 		}
 		
 		private function onButtonClick(evt:AWEvent):void
