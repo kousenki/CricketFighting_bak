@@ -7,6 +7,7 @@ package
 	import org.aswing.UIManager;
 	import org.aswing.skinbuilder.orange.OrangeLookAndFeel;
 	
+	import view.CricketPanel;
 	import view.GrassField;
 	import view.LoadingSplash;
 	import view.ToolBox;
@@ -26,6 +27,7 @@ package
 		
 		// A panel for displaying user specific information
 		public var userPanel:UserInformationPanel;
+		public var cricketPanel:CricketPanel;
 			
 		public function GameStage()
 		{
@@ -50,10 +52,12 @@ package
 			grassField = new GrassField();
 			toolBox = new ToolBox();			
 			userPanel = new UserInformationPanel();
+			cricketPanel = new CricketPanel();
 			
 			addChild(grassField);
 			addChild(toolBox);
 			addChild(userPanel);
+			addChild(cricketPanel);
 		}
 	}
 }
