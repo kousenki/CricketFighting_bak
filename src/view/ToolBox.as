@@ -13,7 +13,6 @@ package view
 		private static var background:Class;
 		
 		public var userPanelBtn:JButton;
-		public var cricketPanelBtn:JButton;
 		
 		public function ToolBox()
 		{
@@ -31,11 +30,6 @@ package view
 			userPanelBtn.setSizeWH(100, 20);
 			userPanelBtn.setLocationXY(20, 10);
 			this.append(userPanelBtn);
-			
-			cricketPanelBtn = new JButton("Cricket Panel");
-			cricketPanelBtn.setSizeWH(100, 20);
-			cricketPanelBtn.setLocationXY(150,10);
-			this.append(cricketPanelBtn);
 		}
 	}
 }
