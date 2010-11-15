@@ -15,8 +15,7 @@ package mediator
 		{
 			super(NAME, viewComponent);
 			
-			startLoadingResources();
-	
+			startLoadingResources();	
 		}
 		
 		private function startLoadingResources():void
@@ -52,15 +51,6 @@ package mediator
 		{
 			view().hideLoadingSplash();
 			view().initGameView();
-			
-			registerChildMediators();
-		}
-		
-		private function registerChildMediators():void
-		{
-			facade.registerMediator(new GrassFieldMediator(view().grassField));
-			facade.registerMediator(new ToolBoxMediator(view().toolBox));
-			facade.registerMediator(new UserPanelMediator(view().userPanel));
 		}
 		
 		public override function listNotificationInterests():Array

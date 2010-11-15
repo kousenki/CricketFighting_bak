@@ -18,7 +18,6 @@ package mediator
 		{
 			super(NAME, viewComponent);
 			view().addEventListener(AWEvent.SHOWN, onUserPanelShown);
-			view().btn.addActionListener(onButtonClick);
 		}
 		
 		private function onUserPanelShown(evt:AWEvent):void
@@ -26,11 +25,6 @@ package mediator
 			var proxy:UserProfileProxy = facade.retrieveProxy(UserProfileProxy.NAME) as UserProfileProxy;
 			profile = proxy.GetUserProfile();
 			view().setUserName(profile.UserName);
-		}
-		
-		private function onButtonClick(evt:AWEvent):void
-		{
-			view().sayHi();
 		}
 		
 		public function view():UserInformationPanel

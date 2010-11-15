@@ -1,6 +1,6 @@
 package mediator
 {
-	import org.aswing.event.AWEvent;
+	import flash.events.Event;
 	import org.puremvc.as3.patterns.mediator.Mediator;
 	
 	import view.ToolBox;
@@ -15,7 +15,7 @@ package mediator
 			super(NAME, viewComponent);
 			view().setLocationXY(0, 480);
 			view().setSizeWH(800, 80);
-			view().userPanelBtn.addActionListener(onUserPanelBtnClick);
+			view().addEventListener(ToolBox.SHOW_USER_PANEL, ShowUserPanel);
 		}
 		
 		public function view():ToolBox
@@ -23,7 +23,7 @@ package mediator
 			return viewComponent as ToolBox;
 		}
 		
-		private function onUserPanelBtnClick(evt:AWEvent):void
+		private function ShowUserPanel(evt:Event):void
 		{
 			this.sendNotification(OPEN_USER_PANEL);
 		}
