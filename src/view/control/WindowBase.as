@@ -1,4 +1,4 @@
-package view
+package view.control
 {
 	import flash.display.DisplayObject;
 	import flash.events.MouseEvent;

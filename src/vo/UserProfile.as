@@ -8,7 +8,6 @@ package vo
 		
 		public function UserProfile()
 		{
-			UserName = "YAUN";
 		}
 
 	}
