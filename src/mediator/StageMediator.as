@@ -6,6 +6,8 @@ package mediator
 	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
+	
+	import view.CricketPanel;
 
 	public class StageMediator extends Mediator
 	{	
@@ -61,6 +63,7 @@ package mediator
 			facade.registerMediator(new GrassFieldMediator(view().grassField));
 			facade.registerMediator(new ToolBoxMediator(view().toolBox));
 			facade.registerMediator(new UserPanelMediator(view().userPanel));
+			facade.registerMediator(new CricketPanelMediator(view().cricketPanel));
 		}
 		
 		public override function listNotificationInterests():Array
@@ -78,6 +81,14 @@ package mediator
 					view().userPanel.setSizeWH(200, 450);
 					view().userPanel.setLocationXY(100, 0);
 					view().userPanel.show();
+				}
+				break;
+				case ToolBoxMediator.OPEN_CRICKET_PANEL:
+				if(!view().cricketPanel.isVisible())
+				{
+					view().cricketPanel.setSizeWH(400, 150);
+					view().cricketPanel.setLocationXY(50, 400);
+					view().cricketPanel.show();
 				}
 				break;
 			}
