@@ -57,7 +57,8 @@ package mediator
 		
 		public override function listNotificationInterests():Array
 		{
-			return [ToolBoxMediator.OPEN_USER_PANEL];
+			return [ToolBoxMediator.OPEN_USER_PANEL,
+					ToolBoxMediator.OPEN_CRICKET_PANEL];
 		}
 		
 		public override function handleNotification(notification:INotification):void
@@ -75,9 +76,9 @@ package mediator
 				case ToolBoxMediator.OPEN_CRICKET_PANEL:
 				if(!view().cricketPanel.isVisible())
 				{
-					view().cricketPanel.setSizeWH(400, 150);
-					view().cricketPanel.setLocationXY(50, 400);
-					view().cricketPanel.show();
+					view().cricketPanel.setSizeWH(500, 100);
+					view().cricketPanel.setLocationXY(170, 385);
+					view().cricketPanel.setVisible(true);
 				}
 				break;
 			}

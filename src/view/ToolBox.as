@@ -12,11 +12,13 @@ package view
 	public class ToolBox extends JPanel
 	{
 		public static const SHOW_USER_PANEL:String = "ShowUserPanel";
+		public static const SHOW_CRICKET_PANEL:String = "ShowCricketPanel";
 		
 		[Embed(source="assets/embed/flaugt.png",scaleGridLeft=7, scaleGridRight=25, scaleGridTop=30, scaleGridBottom=35)]
 		private static var background:Class;
 		
 		private var userPanelBtn:JButton;
+		private var cricketPanelBtn:JButton;
 		
 		public function ToolBox()
 		{
@@ -42,11 +44,17 @@ package view
 			this.append(cricketPanelBtn);
 			
 			userPanelBtn.addActionListener(onUserPanelBtnClicked);
+			cricketPanelBtn.addActionListener(onCricketPanelBtnClicked);
 		}
 		
 		private function onUserPanelBtnClicked(evt:AWEvent):void
 		{
 			dispatchEvent(new Event(SHOW_USER_PANEL));
+		}
+		
+		private function onCricketPanelBtnClicked(evt:AWEvent):void
+		{
+			dispatchEvent(new Event(SHOW_CRICKET_PANEL));
 		}
 	}
 }

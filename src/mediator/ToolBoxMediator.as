@@ -17,6 +17,7 @@ package mediator
 			view().setLocationXY(0, 480);
 			view().setSizeWH(800, 80);
 			view().addEventListener(ToolBox.SHOW_USER_PANEL, ShowUserPanel);
+			view().addEventListener(ToolBox.SHOW_CRICKET_PANEL, ShowCricketPanel);
 		}
 		
 		public function view():ToolBox
@@ -29,7 +30,7 @@ package mediator
 			this.sendNotification(OPEN_USER_PANEL);
 		}
 		
-		private function onCricketPanelBtnClick(evt:AWEvent):void
+		private function ShowCricketPanel(evt:Event):void
 		{
 			this.sendNotification(OPEN_CRICKET_PANEL);
 		}
