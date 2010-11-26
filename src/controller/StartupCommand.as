@@ -26,9 +26,12 @@ package controller
 			facade.registerMediator(new StageMediator(stage));
 			facade.registerMediator(new GrassFieldMediator(stage.grassField));
 			facade.registerMediator(new ToolBoxMediator(stage.toolBox));
+			facade.registerMediator(new FriendPanelMediator(stage.friendPanel));
+			facade.registerMediator(new HeadPanelMediator(stage.headPanel));
 			facade.registerMediator(new UserPanelMediator(stage.userPanel));	
 			facade.registerMediator(new CricketPanelMediator(stage.cricketPanel));
 			facade.registerMediator(new CricketInfoPanelMediator(stage.cricketInformationPanel));
+			
 		}
 	}
 }

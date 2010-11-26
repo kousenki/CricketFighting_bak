@@ -6,6 +6,7 @@ package mediator
 	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.mediator.Mediator;
+	import org.aswing.geom.IntDimension;
 	
 	import view.CricketPanel;
 
@@ -58,7 +59,8 @@ package mediator
 		public override function listNotificationInterests():Array
 		{
 			return [ToolBoxMediator.OPEN_USER_PANEL,
-					ToolBoxMediator.OPEN_CRICKET_PANEL];
+					ToolBoxMediator.OPEN_CRICKET_PANEL,
+					CricketPanelMediator.OPEN_PACKET1_INFO_PANEL];
 		}
 		
 		public override function handleNotification(notification:INotification):void
@@ -79,6 +81,14 @@ package mediator
 					view().cricketPanel.setSizeWH(500, 100);
 					view().cricketPanel.setLocationXY(170, 385);
 					view().cricketPanel.setVisible(true);
+				}
+				break;
+				case CricketPanelMediator.OPEN_PACKET1_INFO_PANEL:
+				if(!view().cricketInformationPanel.isVisible())
+				{
+					view().cricketInformationPanel.setSize(new IntDimension(200,250));
+					view().cricketInformationPanel.setLocationXY(200, 120);
+					view().cricketInformationPanel.setVisible(true);
 				}
 				break;
 			}

@@ -4,12 +4,15 @@ package
 	import flash.display.Sprite;
 	
 	import org.aswing.AsWingManager;
+	import org.aswing.JButton;
 	import org.aswing.UIManager;
 	import org.aswing.skinbuilder.orange.OrangeLookAndFeel;
 	
 	import view.CricketInformationPanel;
 	import view.CricketPanel;
+	import view.FriendPanel;
 	import view.GrassField;
+	import view.HeadPanel;
 	import view.LoadingSplash;
 	import view.ToolBox;
 	import view.UserInformationPanel;
@@ -25,11 +28,18 @@ package
 		// Tool box area, will typicall contain
 		// various tool icons, e.g. cricket cans
 		public var toolBox:ToolBox;
+		public var friendPanel:FriendPanel;
+		public var headPanel:HeadPanel;
 		
 		// A panel for displaying user specific information
 		public var userPanel:UserInformationPanel;
 		public var cricketPanel:CricketPanel;
 		public var cricketInformationPanel:CricketInformationPanel;
+		
+		private var shopBtn:JButton;
+		private var storehouseBtn:JButton;
+		private var campaignBtn:JButton;
+		private var battleRoomBtn:JButton;
 			
 		public function GameStage()
 		{
@@ -53,15 +63,39 @@ package
 		{
 			grassField = new GrassField();
 			toolBox = new ToolBox();			
+			friendPanel = new FriendPanel();
+			headPanel = new HeadPanel();
 			userPanel = new UserInformationPanel();
 			cricketPanel = new CricketPanel();
 			cricketInformationPanel = new CricketInformationPanel();
 			
 			addChild(grassField);
 			addChild(toolBox);
+			addChild(friendPanel);
+			addChild(headPanel);
 			addChild(userPanel);
 			addChild(cricketPanel);
 			addChild(cricketInformationPanel);
+			
+			shopBtn = new JButton("Shop");
+			shopBtn.setSizeWH(100, 20);
+			shopBtn.setLocationXY(300, 50);
+			this.addChild(shopBtn);
+			
+			storehouseBtn = new JButton("Store House");
+			storehouseBtn.setSizeWH(100, 20);
+			storehouseBtn.setLocationXY(420, 50);
+			this.addChild(storehouseBtn);
+			
+			campaignBtn = new JButton("Campaign");
+			campaignBtn.setSizeWH(100, 20);
+			campaignBtn.setLocationXY(540, 50);
+			this.addChild(campaignBtn);
+			
+			battleRoomBtn = new JButton("Battle Room");
+			battleRoomBtn.setSizeWH(100, 20);
+			battleRoomBtn.setLocationXY(660, 50);
+			this.addChild(battleRoomBtn);
 		}
 	}
 }

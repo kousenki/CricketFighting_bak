@@ -13,6 +13,7 @@ package mediator
 	public class CricketPanelMediator extends Mediator
 	{
 		public static const NAME:String = "CricketPanelMediator";
+		public static const OPEN_PACKET1_INFO_PANEL:String = "OpenPacket1InfoPanel";
 		private var profile:CricketProfile;
 		
 		public function CricketPanelMediator(viewComponent:Object=null)
@@ -45,7 +46,7 @@ package mediator
 		
 		private function ShowPacket1InfoPanel(evt:Event):void
 		{
-			this.sendNotification(CricketPanel.SHOW_PACKET1_INFO_PANEL);
+			this.sendNotification(OPEN_PACKET1_INFO_PANEL);
 		}
 	}
 }
